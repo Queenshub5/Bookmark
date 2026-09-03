@@ -1,19 +1,44 @@
-import React from 'react'
+"use client"
+import React from "react";
 
 function Newsletter() {
   return (
-    <div className='bg-[#5368DF] h-90 w-full'>
-        <div className='flex flex-col justify-between text-center'>
-            <h3 className='tracking-[8px] uppercase font-bold mt-10 text-white'>35,000+ ALREADY JOINED</h3>
-            <h1 className='flex justify-center mx-[37%] pt-8 text-white font-semibold text-[30px]'>Stay up-to-date with what we&apos;re doing</h1>
-        </div>
-            <div className='flex justify-center items-center gap-4'>
-            <input type="text" placeholder='Enter your email address' className='rounded-sm text-gray-400 bg-white px-10 py-2' />
-            <button className='bg-red-400 text-white px-8 py-2 rounded-sm'>Contact us</button>
-            </div>
-        
+    <div className="bg-[#5368DF] w-full py-16 md:py-24 px-4">
+      <div className="max-w-xl mx-auto flex flex-col justify-center text-center">
+        {/* Upper Micro Tracking Label */}
+        <h3 className="tracking-[5px] sm:tracking-[8px] text-xs sm:text-sm uppercase font-medium text-white/90 mb-4 sm:mb-6">
+          35,000+ Already Joined
+        </h3>
+
+        {/* Main Section Header */}
+        <h1 className="text-2xl sm:text-3xl md:text-[32px] md:leading-[40px] text-white font-medium max-w-md mx-auto mb-8 md:mb-10">
+          Stay up-to-date with what we&apos;re doing
+        </h1>
+
+        {/* Input Form Fields Wrapper Block */}
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4 max-w-md w-full mx-auto"
+        >
+          <div className="w-full relative">
+            <input
+              type="email"
+              required
+              placeholder="Enter your email address"
+              className="w-full rounded-md text-gray-800 bg-white px-5 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#FA5757] placeholder:text-gray-400 border border-transparent"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="bg-[#FA5757] hover:bg-white text-white hover:text-[#FA5757] font-medium text-sm px-6 py-3 rounded-md shadow-md border-2 border-[#FA5757] transition-all tracking-wide whitespace-nowrap"
+          >
+            Contact Us
+          </button>
+        </form>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Newsletter
+export default Newsletter;

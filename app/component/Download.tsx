@@ -6,69 +6,83 @@ const extension = [
     name: "Chrome",
     version: "62",
     logo: "/images/logo-chrome.svg",
-    className: "mt-10",
+    className: "md:mt-0",
   },
-
   {
     name: "Firefox",
     version: "55",
     logo: "/images/logo-firefox.svg",
-    className: "mt-20",
+    className: "md:mt-10", 
   },
-
   {
     name: "Opera",
     version: "46",
     logo: "/images/logo-opera.svg",
-    className: "mt-30",
+    className: "md:mt-20", // Large stagger step
   },
 ];
 
 function Download() {
   return (
-    <div className="">
-      <div className="container mx-auto">
-      <div className="flex flex-col justify-between items-center gap-8">
-        <h1 className="font-semibold text-[25px] pt-8 text-[#252B46]">
-          Download the extension
-        </h1>
-        <p className="text-gray-400 text-[15px] mx-[35%] text-center">
-          We&apos;ve got more browsers in the pipeline. Please do us know if
-          you&apos;ve got a favourite you&apos;d like us to prioritize.{" "}
-        </p>
-      </div>
+    <div className="py-12 md:py-20">
+      <div className="container mx-auto px-4">
+        {/* Header Section */}
+        <div className="flex flex-col justify-between items-center text-center max-w-lg mx-auto gap-4 mb-10 md:mb-16">
+          <h1 className="font-semibold text-2xl md:text-3xl text-[#252B46]">
+            Download the extension
+          </h1>
+          <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+            We&apos;ve got more browsers in the pipeline. Please do us know if
+            you&apos;ve got a favourite you&apos;d like us to prioritize.
+          </p>
+        </div>
 
-      <div className="flex justify-center items-center gap-4 pt-10 rounded-md py-20">
-        {extension.map((extension) => {
-          return (
-            <div className={`bg-white flex flex-col shadow-md shadow-gray-300 rounded-[8px] items-center justify-center {extension.classname}`} key={extension.name}>
-              <Image
-                src={extension.logo}
-                alt="chrome"
-                width={100}
-                height={100}
-                className=""
-              />
-              <div className="space-y-1 text-center">
-                <h2 className="text-[#252B46] text-[20px] font-bold mt-6"> Add to {extension.name}</h2>
-                <p className="text-gray-400 text-[14px] mt-3">Minimum version {extension.version}</p>
+        {/* Layout of the cards*/}
+        <div className="flex flex-col md:flex-row justify-center items-start gap-8 md:gap-6 max-w-5xl mx-auto min-h-[450px]">
+          {extension.map((item) => {
+            return (
+              <div
+                className={`bg-white w-full max-w-[280px] mx-auto md:mx-0 flex flex-col shadow-md shadow-gray-200 rounded-[12px] items-center justify-center pt-10 pb-6 transition-all ${item.className}`}
+                key={item.name}
+              >
+                <div className="mb-6">
+                  <Image
+                    src={item.logo}
+                    alt={`${item.name} logo`}
+                    width={100}
+                    height={100}
+                    className="object-contain"
+                  />
+                </div>
+
+                <div className="space-y-1 text-center px-4">
+                  <h2 className="text-[#252B46] text-lg font-semibold">
+                    Add to {item.name}
+                  </h2>
+                  <p className="text-gray-400 text-sm">
+                    Minimum version {item.version}
+                  </p>
+                </div>
+
+                <Image
+                  src="/images/bg-dots.svg"
+                  alt=""
+                  width={240}
+                  height={4}
+                  className="w-full my-6"
+                />
+
+                <div className="px-6 w-full">
+                  <button className="bg-[#5368DF] text-white hover:bg-opacity-90 font-medium text-sm rounded-md py-3 w-full shadow-sm shadow-[#5368DF]/30 transition-colors">
+                    Add & Install Extension
+                  </button>
+                </div>
               </div>
-              <Image
-                src="/images/bg-dots.svg"
-                alt=""
-                width={50}
-                height={50}
-                className="w-full pt-10"
-              />
-              <div className="px-4 py-4">
-              <button className="bg-[#5368DF] text-white rounded-sm px-10 py-2 mt-6 md-6">Add & Install Extension</button>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
-      </div>
-     </div>
+    </div>
   );
 }
 
